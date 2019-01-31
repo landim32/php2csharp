@@ -43,7 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\ArrayConverter.cs" />
+    <Compile Include="Converters\BaseConverter.cs" />
+    <Compile Include="Converters\ConstantConverter.cs" />
+    <Compile Include="Converters\FunctionConverter.cs" />
+    <Compile Include="Converters\MethodConverter.cs" />
+    <Compile Include="Converters\NamespaceConverter.cs" />
+    <Compile Include="Converters\StringConverter.cs" />
+    <Compile Include="Converters\VariableConverter.cs" />
+    <Compile Include="Core\PHP2CSharpConsole.cs" />
     <Compile Include="Core\PHP2CSharpConverter.cs" />
+    <Compile Include="Converters\PropertyConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
