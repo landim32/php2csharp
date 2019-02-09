@@ -12,7 +12,7 @@ namespace PHP2CSharp.Converters
         private const string METHOD_PARAM_DOC = @"\@param\s*([0-9,a-z,A-Z,_,|,\[,\]]+)\s*\$([0-9,a-z,A-Z,_,|]+)";
         private const string METHOD_PARAM = @"([0-9,a-z,A-Z,_]+|)\s*\$([0-9,a-z,A-Z,_]+)";
         private const string METHOD_RETURN = @"\@return\s*([0-9,a-z,A-Z,_,|,\[,\]]+)\s*";
-        private const string METHOD_FULL = @"/\*\*(?s:(?!\*/).)*\*/\s*(public|private|protected)\s*function\s*([0-9,a-z,A-Z,_]+)\((.*?)\)";
+        private const string METHOD_FULL = @"/\*\*(?s:(?!\*/).)*\*/\s*(public|private|protected)\s*(static|)\s*function\s*([0-9,a-z,A-Z,_]+)\((.*?)\)";
         private const string PARAM_ITEM = @"([0-9,a-z,A-Z,_]+|)\s*\$([0-9,a-z,A-Z,_]+)";
 
         public override string convert(string sourceCode)
@@ -22,8 +22,8 @@ namespace PHP2CSharp.Converters
                 var docs = "";
                 //var docs = m1.Groups[1].Value;
                 var funcType = m1.Groups[1].Value;
-                var funcName = m1.Groups[2].Value;
-                var funcParam = m1.Groups[3].Value;
+                var funcName = m1.Groups[3].Value;
+                var funcParam = m1.Groups[4].Value;
                 var m = Regex.Match(m1.Groups[0].Value, @"\*\*(.*?)\*/", RegexOptions.IgnoreCase | RegexOptions.Singleline);
                 if (m.Success)
                 {

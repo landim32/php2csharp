@@ -46,6 +46,7 @@
     <Compile Include="Converters\ArrayConverter.cs" />
     <Compile Include="Converters\BaseConverter.cs" />
     <Compile Include="Converters\ConstantConverter.cs" />
+    <Compile Include="Converters\DBConverter.cs" />
     <Compile Include="Converters\FunctionConverter.cs" />
     <Compile Include="Converters\MethodConverter.cs" />
     <Compile Include="Converters\NamespaceConverter.cs" />

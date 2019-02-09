@@ -14,6 +14,7 @@ namespace PHP2CSharp.Core
 
         public PHP2CSharpConverter() {
             _converters = new List<BaseConverter>() {
+                new DBConverter(),
                 new NamespaceConverter(),
                 new ConstantConverter(),
                 new ArrayConverter(),
@@ -26,19 +27,26 @@ namespace PHP2CSharp.Core
         }
 
         private string clearCode(string sourceCode) {
+            sourceCode = sourceCode.Replace("\r", "");
             var source = new StringBuilder();
             var lines = sourceCode.Trim().Split(new[] { '\n' });
             foreach (var line in lines)
             {
-                if (line.Trim() == "") {
-                    source.AppendLine();
+                if (string.IsNullOrEmpty(line.Trim())) {
+                    source.Append("\n");
                 }
-                source.AppendLine(line);
+                else
+                {
+                    source.AppendLine(line);
+                }
             }
-            source = source.Replace("\r", "");
-            source = source.Replace("\n\n\n", "\n");
-            source = source.Replace("\n", "\r\n");
-            return source.ToString();
+            sourceCode = source.ToString();
+            sourceCode = sourceCode.Replace("\r", "");
+            while (sourceCode.IndexOf("\n\n\n") >= 0) {
+                sourceCode = sourceCode.Replace("\n\n\n", "\n");
+            }
+            sourceCode = sourceCode.Replace("\n", "\r\n");
+            return sourceCode;
         }
 
         public string convert(string originalSource) {

@@ -9,8 +9,8 @@ namespace PHP2CSharp.Converters
 {
     public class PropertyConverter : BaseConverter
     {
-        private const string PROPERTIES = @"private \$([0-9,a-z,A-Z,_]+).*;";
-        private const string PROPERTY = @"private \${0}.*;";
+        private const string PROPERTIES = @"(private|protected) \$([0-9,a-z,A-Z,_]+).*;";
+        private const string PROPERTY = @"(private|protected) \${0}.*;";
         private const string PROPERTY_GET_DOC = @"/\*\*\s*\*\s*@return\s*([0-9,a-z,A-Z]+)\s*\*/";
         private const string PROPERTY_GET = @"public function get([0-9,a-z,A-Z,_]+)\(\)\s*{\s*return\s*\$this->{0};\s*}";
         private const string PROPERTY_SET_DOC = @"/\*\*\s*\*\s*@param\s*([0-9,a-z,A-Z]+)\s*\$([0-9,a-z,A-Z]+)\s*\*/";
@@ -21,7 +21,7 @@ namespace PHP2CSharp.Converters
             var results = Regex.Matches(sourceCode, PROPERTIES, RegexOptions.IgnoreCase);
             foreach (Match match in results)
             {
-                var prop = match.Groups[1].Value;
+                var prop = match.Groups[2].Value;
                 var propName = prop;
                 string typeName = "string";
 

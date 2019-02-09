@@ -19,7 +19,7 @@ namespace PHP2CSharp.Converters
                 return "public const string " + match.Groups[1].Value + " = \"" + match.Groups[2].Value + "\";";
             }, RegexOptions.IgnoreCase);
             sourceCode = Regex.Replace(sourceCode, CONSTANT_INT, delegate (Match match) {
-                return "public const int " + match.Groups[1].Value + " = \"" + match.Groups[2].Value + "\";";
+                return "public const int " + match.Groups[1].Value + " = " + match.Groups[2].Value + ";";
             }, RegexOptions.IgnoreCase);
             sourceCode = Regex.Replace(sourceCode, CONSTANT_VAR, delegate (Match match) {
                 return match.Groups[1].Value + "." + match.Groups[2].Value;

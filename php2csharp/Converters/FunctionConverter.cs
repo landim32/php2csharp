@@ -21,6 +21,10 @@ namespace PHP2CSharp.Converters
                 ["%s"] = "{0}",
                 ["ceil"] = "Math.Ceiling",
                 ["floor"] = "Math.Floor",
+                ["isNullOrEmpty"] = "string.IsNullOrEmpty",
+                ["implode"] = "string.Join",
+                ["round"] = "Math.Round",
+                ["elseif"] = "else if",
             };
         }
 
