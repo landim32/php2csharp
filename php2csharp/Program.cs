@@ -22,20 +22,20 @@ namespace PHP2CSharp
             Console.ReadKey();
             */
 
-            //try {
-            var php2csharp = new PHP2CSharpConsole();
-                php2csharp.OriginDir = @"F:\xampp\htdocs\wooden-stone\server\src";
-                php2csharp.DestinyDir = @"F:\Projetos\Emagine.NET\Emagine.RPG";
-                php2csharp.execute();
-            //Console.ReadKey();
-            /*
+            try {
+
+                var php2csharp = new PHP2CSharpConsole();
+                //php2csharp.OriginDir = @"F:\xampp\htdocs\wooden-stone\server\src";
+                //php2csharp.DestinyDir = @"F:\Projetos\Emagine.NET\Emagine.RPG";
+                php2csharp.execute(args);
+
+                //Console.ReadKey();
             }
             catch (Exception erro) {
                 Console.WriteLine(erro.Message);
                 Console.WriteLine(erro.StackTrace);
-                Console.ReadKey();
+                //Console.ReadKey();
             }
-            */
         }
     }
 }

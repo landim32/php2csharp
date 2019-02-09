@@ -146,13 +146,19 @@ namespace PHP2CSharp.Converters
             return sourceCode;
         }
 
-        public override string convert(string sourceCode)
+        //public override string convert(string sourceCode)
+        public string convertFunction(string sourceCode)
         {
             sourceCode = convertQuery(sourceCode);
             sourceCode = convertList(sourceCode);
             sourceCode = convertGet(sourceCode);
             sourceCode = convertInsertWithId(sourceCode);
             sourceCode = convertExecute(sourceCode);
+            return sourceCode;
+        }
+
+        public override string convert(string sourceCode) {
+            sourceCode = convertFunctions(sourceCode, convertFunction);
             sourceCode = sourceCode.Replace("PDOStatement", "MySqlCommand");
             sourceCode = Regex.Replace(sourceCode, BIND_VALUE_INT, delegate (Match match) {
                 return match.Groups[1].Value + ".Parameters.Add(\"" + match.Groups[2].Value + "\", MySqlDbType.Int32).Value = " + match.Groups[3].Value + ";";
