@@ -37,7 +37,8 @@ namespace PHP2CSharp.Core
             foreach (var file in Directory.GetFiles(fullPathDir)) {
                 if (file.EndsWith(".php", true, null))
                 {
-                    string relativeOrigPath = file.Substring(OriginDir.Length + 1);
+                    //string relativeOrigPath = file.Substring(OriginDir.Length + 1);
+                    string relativeOrigPath = file.Substring(OriginDir.Length);
                     string relativeDestPath = relativeOrigPath.Substring(0, relativeOrigPath.Length - 3) + "cs";
                     string destinyPath = Path.Combine(DestinyDir, relativeDestPath);
 
